@@ -1,0 +1,12 @@
+README.md
+setup.py
+OptimizacionProject/__init__.py
+OptimizacionProject/mod1.py
+OptimizacionProject/mod2.py
+OptimizationProjectJCC.egg-info/PKG-INFO
+OptimizationProjectJCC.egg-info/SOURCES.txt
+OptimizationProjectJCC.egg-info/dependency_links.txt
+OptimizationProjectJCC.egg-info/top_level.txt
+extras/__init__.py
+extras/e_mod1.py
+extras/e_mod2.py
