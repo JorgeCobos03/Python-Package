@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-class IntervalHalvingSearch:
+class BisectionSearch:
     def __init__(self, func, lower_bound, upper_bound):
         self.func = func
         self.lower_bound = lower_bound
@@ -11,16 +11,17 @@ class IntervalHalvingSearch:
         iterations = []
         a = self.lower_bound
         b = self.upper_bound
-        delta = precision / 2
 
         while abs(b - a) > precision:
-            x1 = a + delta
-            x2 = b - delta
-            if self.func(x1) < self.func(x2):
-                b = x2
+            c = (a + b) / 2
+            if self.func(c) == 0:
+                break
+            elif self.func(a) * self.func(c) < 0:
+                b = c
             else:
-                a = x1
-            iterations.append((a + b) / 2)
+                a = c
+            iterations.append(c)
+
         return iterations
 
 def f1(x):
@@ -41,17 +42,17 @@ def caja(L):
 def lata_funcion(x):
     return 2 * np.pi * x ** 2 + (500 / x)
 
-search_f1 = IntervalHalvingSearch(f1, 0.1, 10)
-search_f2 = IntervalHalvingSearch(f2, -5, 5)
-search_f3 = IntervalHalvingSearch(f3, -2.5, 2.5)
-search_f4 = IntervalHalvingSearch(f4, -1.5, 3)
-search_caja = IntervalHalvingSearch(caja, 2, 3)  
-search_lata = IntervalHalvingSearch(lata_funcion, 0.1, 10)
+search_f1 = BisectionSearch(f1, 0.1, 10)
+search_f2 = BisectionSearch(f2, -5, 5)
+search_f3 = BisectionSearch(f3, -2.5, 2.5)
+search_f4 = BisectionSearch(f4, -1.5, 3)
+search_caja = BisectionSearch(caja, 2, 3)  
+search_lata = BisectionSearch(lata_funcion, 0.1, 10)
 
 precision_values = [0.5, 0.1, 0.01, 0.0001]
 
 for precision in precision_values:
-    plt.figure(figsize=(10, 6))
+    plt.figure(figsize=(15, 10))
 
     # f1
     plt.subplot(2, 3, 1)

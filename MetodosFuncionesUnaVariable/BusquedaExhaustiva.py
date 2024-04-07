@@ -38,8 +38,8 @@ def f3(x):
 def f4(x):
     return 3*x**4 - 8*x**3 - 6*x**2 + 12*x
 
-def V(L):
-    return 200 * L - 60 * L**2 + 4 * L**3
+def caja(L):
+    return (L * (20 - 2*L) * (10 - 2*L))*-1
 
 def lata_funcion(x):
     return 2 * np.pi * x ** 2 + (500 / x)
@@ -48,7 +48,7 @@ search_f1 = ExhaustiveSearch(f1, 0.1, 10)
 search_f2 = ExhaustiveSearch(f2, -5, 5)
 search_f3 = ExhaustiveSearch(f3, -2.5, 2.5)
 search_f4 = ExhaustiveSearch(f4, -1.5, 3)
-search_V = ExhaustiveSearch(V, 2, 3)  
+search_caja = ExhaustiveSearch(caja, 2, 3)  
 search_lata = ExhaustiveSearch(lata_funcion, 0.1, 10)  
 
 precision_values = [0.5, 0.1, 0.01, 0.0001]
@@ -118,12 +118,12 @@ for precision in precision_values:
 
     # caja
     plt.subplot(2, 3, 6)
-    L_values, V_values, max_L, max_V, visited_points = search_V.search(precision)
-    plt.plot(L_values, V_values, label=f'Precision = {precision}')
-    plt.scatter([p[0] for p in visited_points], [V(p[0]) for p in visited_points], color='blue', alpha=0.3, label='Visited Points')
-    plt.scatter(max_L, max_V, color='red', label=f'Máximo en L ≈ {max_L:.2f}, V ≈ {max_V:.2f}')
-    plt.xlabel('L')
-    plt.ylabel('Volumen')
+    L_values, caja_values, max_L, max_c, visited_points = search_caja.search(precision)
+    plt.plot(L_values, caja_values, label=f'Precision = {precision}')
+    plt.scatter([p[0] for p in visited_points], [caja(p[0]) for p in visited_points], color='blue', alpha=0.3, label='Visited Points')
+    plt.scatter(max_L, max_c, color='red', label=f'Máximo en L ≈ {max_L:.2f}, V ≈ {max_c:.2f}')
+    plt.xlabel('X')
+    plt.ylabel('Y')
     plt.title('Caja')
     plt.legend()
     plt.grid(True)

@@ -1,52 +1,67 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-class IntervalHalvingSearch:
-    def __init__(self, func, lower_bound, upper_bound):
+class NewtonRaphsonSearch:
+    def __init__(self, func, derivative, initial_guess):
         self.func = func
-        self.lower_bound = lower_bound
-        self.upper_bound = upper_bound
+        self.derivative = derivative
+        self.initial_guess = initial_guess
 
-    def search(self, precision):
+    def search(self, precision, max_iter=100):
         iterations = []
-        a = self.lower_bound
-        b = self.upper_bound
-        delta = precision / 2
+        x = self.initial_guess
 
-        while abs(b - a) > precision:
-            x1 = a + delta
-            x2 = b - delta
-            if self.func(x1) < self.func(x2):
-                b = x2
-            else:
-                a = x1
-            iterations.append((a + b) / 2)
+        for _ in range(max_iter):
+            x_next = x - self.func(x) / self.derivative(x)
+            iterations.append(x_next)
+            if abs(x_next - x) < precision:
+                break
+            x = x_next
+
         return iterations
 
 def f1(x):
     return x**2 + 54/x
 
+def f1_derivative(x):
+    return 2*x - 54/x**2
+
 def f2(x):
     return x**3 + 2*x - 3
+
+def f2_derivative(x):
+    return 3*x**2 + 2
 
 def f3(x):
     return x**4 + x**2 - 33
 
+def f3_derivative(x):
+    return 4*x**3 + 2*x
+
 def f4(x):
     return 3*x**4 - 8*x**3 - 6*x**2 + 12*x
+
+def f4_derivative(x):
+    return 12*x**3 - 24*x**2 - 12*x + 12
 
 def caja(L):
     return (L * (20 - 2*L) * (10 - 2*L))*-1
 
+def caja_derivative(L):
+    return 200 - 120*L + 12*L**2
+
 def lata_funcion(x):
     return 2 * np.pi * x ** 2 + (500 / x)
 
-search_f1 = IntervalHalvingSearch(f1, 0.1, 10)
-search_f2 = IntervalHalvingSearch(f2, -5, 5)
-search_f3 = IntervalHalvingSearch(f3, -2.5, 2.5)
-search_f4 = IntervalHalvingSearch(f4, -1.5, 3)
-search_caja = IntervalHalvingSearch(caja, 2, 3)  
-search_lata = IntervalHalvingSearch(lata_funcion, 0.1, 10)
+def lata_funcion_derivative(x):
+    return 4 * np.pi * x - 500 / x**2
+
+search_f1 = NewtonRaphsonSearch(f1, f1_derivative, 0.1)
+search_f2 = NewtonRaphsonSearch(f2, f2_derivative, -5)
+search_f3 = NewtonRaphsonSearch(f3, f3_derivative, -2.5)
+search_f4 = NewtonRaphsonSearch(f4, f4_derivative, -1.5)
+search_caja = NewtonRaphsonSearch(caja, caja_derivative, 2.5)  
+search_lata = NewtonRaphsonSearch(lata_funcion, lata_funcion_derivative, 0.1)
 
 precision_values = [0.5, 0.1, 0.01, 0.0001]
 

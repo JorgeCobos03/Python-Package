@@ -48,8 +48,8 @@ def f3(x):
 def f4(x):
     return 3*x**4 - 8*x**3 - 6*x**2 + 12*x
 
-def V(L):
-    return 200 * L - 60 * L**2 + 4 * L**3
+def caja(L):
+    return (L * (20 - 2*L) * (10 - 2*L))*-1
 
 def lata_funcion(x):
     return 2 * np.pi * x ** 2 + (500 / x)
@@ -58,7 +58,7 @@ search_f1 = FibonacciSearch(f1, 0.1, 10)
 search_f2 = FibonacciSearch(f2, -5, 5)
 search_f3 = FibonacciSearch(f3, -2.5, 2.5)
 search_f4 = FibonacciSearch(f4, -1.5, 3)
-search_V = FibonacciSearch(V, 2, 3)  
+search_caja = FibonacciSearch(caja, 2, 3)  
 search_lata = FibonacciSearch(lata_funcion, 0.1, 10)
 
 precision_values = [0.5, 0.1, 0.01, 0.0001]
@@ -133,13 +133,13 @@ for precision in precision_values:
 
     # caja
     plt.subplot(2, 3, 6)
-    iterations = search_V.search(precision)
+    iterations = search_caja.search(precision)
     L_values = np.linspace(2, 3, 1000)
-    V_values = V(L_values)
+    V_values = caja(L_values)
     plt.plot(L_values, V_values, label=f'Precision = {precision}')
-    plt.scatter(iterations, [V(x) for x in iterations], color='red', label=f'Iterations (Precision: {precision})')
-    plt.xlabel('L')
-    plt.ylabel('Volumen')
+    plt.scatter(iterations, [caja(x) for x in iterations], color='red', label=f'Iterations (Precision: {precision})')
+    plt.xlabel('X')
+    plt.ylabel('Y')
     plt.title('Caja')
     plt.legend()
     plt.grid(True)
