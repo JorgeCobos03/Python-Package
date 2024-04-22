@@ -42,6 +42,6 @@ Puedes instalar estos paquetes usando pip:
 Para usar el script, simplemente ejecuta el archivo `plot_function_and_gradient.py`. Asegúrate de tener instalados los paquetes requeridos mencionados anteriormente.
 
 ```bash
-python plot_function_and_gradient.py
+python plot_funciong.py
 ```
 Esto generará las gráficas de la función y su gradiente en tres diferentes representaciones: 3D, contornos y campo vectorial.
