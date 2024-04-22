@@ -39,7 +39,7 @@ Puedes instalar estos paquetes usando pip:
 
 ## Uso
 
-Para usar el script, simplemente ejecuta el archivo `Graficas_3D_Contorno_MV.py`. Asegúrate de tener instalados los paquetes requeridos mencionados anteriormente.
+Para usar el script, simplemente ejecuta el archivo `Graficas_3D_Contorno_CV.py`. Asegúrate de tener instalados los paquetes requeridos mencionados anteriormente.
 
 ```bash
 python plot_funciong.py
