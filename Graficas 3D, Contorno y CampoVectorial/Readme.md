@@ -10,6 +10,20 @@ El script proporciona las siguientes funcionalidades:
 - Generación de contornos de la función en un plano bidimensional.
 - Visualización del campo vectorial del gradiente en un plano bidimensional.
 
+## Ejemplos de Gráficas
+
+A continuación se muestran ejemplos de las gráficas generadas en el script:
+
+### Gráfica en 3D
+![Gráfica en 3D](3D.png)
+
+### Gráfica de Contornos
+![Gráfica de Contornos](CONTORNOS.png)
+
+### Campo Vectorial
+![Campo Vectorial](CAMPO_VECTORIAL.png)
+
+
 ## Requisitos
 
 El script requiere los siguientes paquetes de Python:
