@@ -42,6 +42,6 @@ Puedes instalar estos paquetes usando pip:
 Para usar el script, simplemente ejecuta el archivo `Graficas_3D_Contorno_CV.py`. Asegúrate de tener instalados los paquetes requeridos mencionados anteriormente.
 
 ```bash
-python plot_funciong.py
+plot_funciong(f)
 ```
 Esto generará las gráficas de la función y su gradiente en tres diferentes representaciones: 3D, contornos y campo vectorial.
