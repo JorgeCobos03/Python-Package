@@ -18,7 +18,6 @@ def conjugate_gradient_method(f, grad_f, x0, tol1=1e-5, tol2=1e-5, tol3=1e-5, ma
     x_prev = x
     
     for k in range(max_iter):
-        # Búsqueda de línea usando minimize_scalar
         def f_alpha(alpha):
             return f(x + alpha * s)
         
@@ -27,7 +26,6 @@ def conjugate_gradient_method(f, grad_f, x0, tol1=1e-5, tol2=1e-5, tol3=1e-5, ma
         
         x_new = x + alpha * s
         
-        # Verificación de tolerancia para evitar divisiones por cero
         norm_x_new = np.linalg.norm(x_new)
         norm_x = np.linalg.norm(x)
         
@@ -35,7 +33,7 @@ def conjugate_gradient_method(f, grad_f, x0, tol1=1e-5, tol2=1e-5, tol3=1e-5, ma
             norm_x = 1  # Evitar división por cero
         
         if norm_x_new == 0:
-            norm_x_new = 1  # Evitar división por cero
+            norm_x_new = 1  
         
         if np.linalg.norm(x_new - x) / norm_x < tol2 or np.linalg.norm(grad_f(x_new)) <= tol3:
             return x_new.tolist()
@@ -44,7 +42,6 @@ def conjugate_gradient_method(f, grad_f, x0, tol1=1e-5, tol2=1e-5, tol3=1e-5, ma
         beta = np.dot(grad_new, grad_new) / np.dot(grad, grad)
         s = -grad_new + beta * s
         
-        # Limitar el tamaño de s para evitar overflow
         norm_s = np.linalg.norm(s)
         if norm_s > 1e10:
             s = s / norm_s

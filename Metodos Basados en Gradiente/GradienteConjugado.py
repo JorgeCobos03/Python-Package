@@ -1,16 +1,13 @@
 import math
 
-# Función de Himmelblau
 def himmelblau(x):
     return (x[0]**2 + x[1] - 11)**2 + (x[0] + x[1]**2 - 7)**2
 
-# Gradiente de la función de Himmelblau
 def grad_himmelblau(x):
     df_dx = 4 * x[0] * (x[0]**2 + x[1] - 11) + 2 * (x[0] + x[1]**2 - 7)
     df_dy = 2 * (x[0]**2 + x[1] - 11) + 4 * x[1] * (x[0] + x[1]**2 - 7)
     return [df_dx, df_dy]
 
-# Método del gradiente conjugado
 def conjugate_gradient_method(f, grad_f, x0, tol1=1e-5, tol2=1e-5, tol3=1e-5, max_iter=1000):
     x = x0[:]
     grad = grad_f(x)
@@ -24,7 +21,6 @@ def conjugate_gradient_method(f, grad_f, x0, tol1=1e-5, tol2=1e-5, tol3=1e-5, ma
         
         lmbda = minimize_scalar(f_lambda).x
         
-        # Actualizar x
         x_new = [x[i] + lmbda * s[i] for i in range(len(x))]
         
         if all(abs(x_new[i] - x[i]) / (abs(x[i]) if abs(x[i]) > tol1 else 1) < tol2 for i in range(len(x))) \

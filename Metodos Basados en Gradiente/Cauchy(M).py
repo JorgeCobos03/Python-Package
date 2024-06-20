@@ -18,7 +18,7 @@ def barzilai_borwein_step(grad_prev, grad, x_prev, x):
     y = [grad[i] - grad_prev[i] for i in range(len(x))]
     denom = sum(s[i] * y[i] for i in range(len(s)))
     if denom == 0:
-        return 1  # Default step size
+        return 1  
     alpha = sum(s[i] * s[i] for i in range(len(s))) / denom
     return alpha
 

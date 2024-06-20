@@ -44,7 +44,7 @@ def barzilai_borwein_step(grad_prev, grad, x_prev, x):
     y = grad - grad_prev
     denom = np.dot(s, y)
     if denom == 0:
-        return 1  # Default step size
+        return 1  
     alpha = np.dot(s, s) / denom
     return alpha
 

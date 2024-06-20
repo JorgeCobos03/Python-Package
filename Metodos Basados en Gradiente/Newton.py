@@ -1,17 +1,14 @@
 import numpy as np
 import math
 
-# Función de Himmelblau
 def himmelblau(x):
     return (x[0]**2 + x[1] - 11)**2 + (x[0] + x[1]**2 - 7)**2
 
-# Gradiente de la función de Himmelblau
 def grad_himmelblau(x):
     df_dx = 4 * x[0] * (x[0]**2 + x[1] - 11) + 2 * (x[0] + x[1]**2 - 7)
     df_dy = 2 * (x[0]**2 + x[1] - 11) + 4 * x[1] * (x[0] + x[1]**2 - 7)
     return np.array([df_dx, df_dy])
 
-# Cálculo numérico de la matriz Hessiana
 def hessian_matrix(f, x, deltaX=1e-5):
     fx = f(x)
     N = len(x)
@@ -42,7 +39,6 @@ def hessian_matrix(f, x, deltaX=1e-5):
         H.append(hi)
     return np.array(H)
 
-# Método de Newton
 def newton_method(f, grad_f, x0, tol1=1e-5, tol2=1e-5, tol3=1e-5, max_iter=1000):
     x = np.array(x0)
     
@@ -50,7 +46,6 @@ def newton_method(f, grad_f, x0, tol1=1e-5, tol2=1e-5, tol3=1e-5, max_iter=1000)
         grad = grad_f(x)
         H = hessian_matrix(f, x)
         
-        # Calcular la dirección de Newton
         H_inv = np.linalg.inv(H)
         p = -np.dot(H_inv, grad)
         
@@ -60,12 +55,11 @@ def newton_method(f, grad_f, x0, tol1=1e-5, tol2=1e-5, tol3=1e-5, max_iter=1000)
         
         alpha = minimize_scalar(f_alpha).x
         
-        # Actualizar x
         x_new = x + alpha * p
         
         norm_x = np.linalg.norm(x)
         if norm_x == 0:
-            norm_x = 1  # Evitar división por cero
+            norm_x = 1  
         
         if np.linalg.norm(x_new - x) / norm_x < tol2 or np.linalg.norm(grad_f(x_new)) <= tol3:
             x = x_new
@@ -77,7 +71,6 @@ def newton_method(f, grad_f, x0, tol1=1e-5, tol2=1e-5, tol3=1e-5, max_iter=1000)
 
 from scipy.optimize import minimize_scalar
 
-# Ejemplo de uso:
 x0 = [0.0, 0.0]
 minimo = newton_method(himmelblau, grad_himmelblau, x0)
 print(f"Resultado Método de Newton: {minimo}")
