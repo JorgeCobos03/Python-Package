@@ -40,8 +40,6 @@ En este método, se utiliza una aproximación de Barzilai-Borwein para determina
     - Actualizar $\mathbf{g}_{k+1} = \nabla f(\mathbf{x}_{k+1})$.
 
 
-
-
 ## Método del Gradiente Conjugado
 El método del gradiente conjugado es un método iterativo para resolver sistemas de ecuaciones lineales grandes y dispersos, que aparecen a menudo en problemas de optimización.
 
@@ -55,7 +53,6 @@ El método del gradiente conjugado es un método iterativo para resolver sistema
     - Calcular el nuevo gradiente $\mathbf{g}_{k+1} = \nabla f(\mathbf{x}_{k+1})$.
     - Calcular $\beta_k$ para la nueva dirección.
     - Actualizar $\mathbf{d}_{k+1} = -\mathbf{g}_{k+1} + \beta_k \mathbf{d}_k$.
-
 
 
 ## Método de Newton
