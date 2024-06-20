@@ -2,7 +2,7 @@
 
 Este repositorio contiene implementaciones de varios métodos de optimización para encontrar los mínimos de la función de Himmelblau. La función de Himmelblau es una función utilizada comúnmente para probar algoritmos de optimización debido a su forma compleja y múltiples mínimos locales.
 
-## Función de Himmelblau´s
+## Función de Himmelblau's
 
 La función de Himmelblau está definida por la siguiente ecuación:
 
