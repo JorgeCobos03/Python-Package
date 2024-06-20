@@ -55,6 +55,7 @@ El método del gradiente conjugado es un método iterativo para resolver sistema
     - Actualizar $\mathbf{d}_{k+1} = -\mathbf{g}_{k+1} + \beta_k \mathbf{d}_k$.
 
 
+
 ## Método de Newton
 El método de Newton utiliza el gradiente y la matriz Hessiana de la función objetivo para encontrar los mínimos. Este método es conocido por su rápida convergencia cuando se encuentra cerca del mínimo.
 
