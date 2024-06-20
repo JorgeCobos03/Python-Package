@@ -15,13 +15,14 @@ def himmelblau(x):
 Este método utiliza el gradiente y una búsqueda unidimensional (búsqueda dorada) para encontrar la dirección de descenso. La búsqueda dorada se usa para encontrar el paso óptimo a lo largo de la dirección del gradiente.
 
 ## Pseudocódigo
+```text
 1. Inicializar x con un valor inicial x0.
 2. Mientras no se cumpla el criterio de convergencia:
     - Calcular el gradiente ∇f(x).
     - Definir la dirección de búsqueda d = -∇f(x).
     - Usar la búsqueda dorada para encontrar el paso óptimo α que minimiza f(x + αd).
     - Actualizar x ← x + αd.
-
+```
 ## Método de Cauchy con Barzilai-Borwein
 En este método, se utiliza una aproximación de Barzilai-Borwein para determinar el tamaño del paso. Esto permite una convergencia más rápida comparada con el método tradicional de Cauchy.
 
