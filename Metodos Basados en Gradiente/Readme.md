@@ -16,12 +16,13 @@ Este método utiliza el gradiente y una búsqueda unidimensional (búsqueda dora
 
 ## Pseudocódigo
 
-1. Inicializar $ \mathbf{x} $ con un valor inicial $ \mathbf{x}_0 $.
+1. Inicializar $\mathbf{x}$ con un valor inicial $\mathbf{x}_0$.
 2. Mientras no se cumpla el criterio de convergencia:
-3. Calcular el gradiente $ \nabla f(\mathbf{x}) $.
-4. Definir la dirección de búsqueda $ \mathbf{d} = -\nabla f(\mathbf{x}) $.
-5. Usar la búsqueda dorada para encontrar el paso óptimo $ \alpha $ que minimiza $ f(\mathbf{x} + \alpha \mathbf{d}) $.
-6. Actualizar $ \mathbf{x} \leftarrow \mathbf{x} + \alpha \mathbf{d} $.
+    - Calcular el gradiente $\nabla f(\mathbf{x})$.
+    - Definir la dirección de búsqueda $\mathbf{d} = -\nabla f(\mathbf{x})$.
+    - Usar la búsqueda dorada para encontrar el paso óptimo $\alpha$ que minimiza $f(\mathbf{x} + \alpha \mathbf{d})$.
+    - Actualizar $\mathbf{x} \leftarrow \mathbf{x} + \alpha \mathbf{d}$.
+
 
 
 ## Método de Cauchy con Barzilai-Borwein
