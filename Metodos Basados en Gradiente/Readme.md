@@ -15,54 +15,58 @@ def himmelblau(x):
 Este método utiliza el gradiente y una búsqueda unidimensional (búsqueda dorada) para encontrar la dirección de descenso. La búsqueda dorada se usa para encontrar el paso óptimo a lo largo de la dirección del gradiente.
 
 ## Pseudocódigo
-```text
-1. Inicializar x con un valor inicial x0.
+
+1. Inicializar $ \mathbf{x} $ con un valor inicial $ \mathbf{x}_0 $.
 2. Mientras no se cumpla el criterio de convergencia:
-    - Calcular el gradiente ∇f(x).
-    - Definir la dirección de búsqueda d = -∇f(x).
-    - Usar la búsqueda dorada para encontrar el paso óptimo α que minimiza f(x + αd).
-    - Actualizar x ← x + αd.
-```
+3. Calcular el gradiente $ \nabla f(\mathbf{x}) $.
+4. Definir la dirección de búsqueda $ \mathbf{d} = -\nabla f(\mathbf{x}) $.
+5. Usar la búsqueda dorada para encontrar el paso óptimo $ \alpha $ que minimiza $ f(\mathbf{x} + \alpha \mathbf{d}) $.
+6. Actualizar $ \mathbf{x} \leftarrow \mathbf{x} + \alpha \mathbf{d} $.
+
+
 ## Método de Cauchy con Barzilai-Borwein
 En este método, se utiliza una aproximación de Barzilai-Borwein para determinar el tamaño del paso. Esto permite una convergencia más rápida comparada con el método tradicional de Cauchy.
 
 ## Pseudocódigo
-1. Inicializar x con un valor inicial x0.
-2. Calcular el gradiente g0 = ∇f(x0).
-3. Inicializar α con un valor pequeño.
+1. Inicializar $ \mathbf{x} $ con un valor inicial $ \mathbf{x}_0 $.
+2. Calcular el gradiente $ \mathbf{g}_0 = \nabla f(\mathbf{x}_0) $.
+3. Inicializar $ \alpha $ con un valor pequeño.
 4. Mientras no se cumpla el criterio de convergencia:
-    - Actualizar x_{k+1} = x_k - α_k g_k.
-    - Calcular s_k = x_{k+1} - x_k.
-    - Calcular y_k = ∇f(x_{k+1}) - g_k.
-    - Actualizar α_{k+1} = (s_k^T y_k) / (y_k^T y_k).
-    - Actualizar g_{k+1} = ∇f(x_{k+1}).
+5. Actualizar $ \mathbf{x}_{k+1} = \mathbf{x}_k - \alpha_k \mathbf{g}_k $.
+6. Calcular $ \mathbf{s}k = \mathbf{x}{k+1} - \mathbf{x}_k $.
+7. Calcular $ \mathbf{y}k = \nabla f(\mathbf{x}{k+1}) - \mathbf{g}_k $.
+8. Actualizar $ \alpha_{k+1} = \frac{{\mathbf{s}_k^T \mathbf{y}_k}}{{\mathbf{y}_k^T \mathbf{y}_k}} $.
+9. Actualizar $ \mathbf{g}{k+1} = \nabla f(\mathbf{x}{k+1}) $.
+
 
 
 ## Método del Gradiente Conjugado
 El método del gradiente conjugado es un método iterativo para resolver sistemas de ecuaciones lineales grandes y dispersos, que aparecen a menudo en problemas de optimización.
 
 ## Pseudocódigo
-1. Inicializar x con un valor inicial x0.
-2. Calcular el gradiente g0 = ∇f(x0).
-3. Establecer la dirección inicial d0 = -g0.
+1. Inicializar $ \mathbf{x} $ con un valor inicial $ \mathbf{x}_0 $.
+2. Calcular el gradiente $ \mathbf{g}_0 = \nabla f(\mathbf{x}_0) $.
+3. Establecer la dirección inicial $ \mathbf{d}_0 = -\mathbf{g}_0 $.
 4. Mientras no se cumpla el criterio de convergencia:
-    - Calcular el paso óptimo α_k.
-    - Actualizar x_{k+1} = x_k + α_k d_k.
-    - Calcular el nuevo gradiente g_{k+1} = ∇f(x_{k+1}).
-    - Calcular β_k para la nueva dirección.
-    - Actualizar d_{k+1} = -g_{k+1} + β_k d_k.
+5. Calcular el paso óptimo $ \alpha_k $.
+6. Actualizar $ \mathbf{x}_{k+1} = \mathbf{x}_k + \alpha_k \mathbf{d}_k $.
+7. Calcular el nuevo gradiente $ \mathbf{g}{k+1} = \nabla f(\mathbf{x}{k+1}) $.
+8. Calcular $ \beta_k $ para la nueva dirección.
+9. Actualizar $ \mathbf{d}{k+1} = -\mathbf{g}{k+1} + \beta_k \mathbf{d}_k $.
+
 
 ## Método de Newton
 El método de Newton utiliza el gradiente y la matriz Hessiana de la función objetivo para encontrar los mínimos. Este método es conocido por su rápida convergencia cuando se encuentra cerca del mínimo.
 
 ## Pseudocódigo
-1. Inicializar x con un valor inicial x0.
+1. Inicializar $ \mathbf{x} $ con un valor inicial $ \mathbf{x}_0 $.
 2. Mientras no se cumpla el criterio de convergencia:
-    - Calcular el gradiente ∇f(x).
-    - Calcular la Hessiana H(x).
-    - Calcular la dirección de Newton d = -H(x)^{-1} ∇f(x).
-    - Determinar el paso α usando un método de línea de búsqueda.
-    - Actualizar x ← x + αd.
+3. Calcular el gradiente $ \nabla f(\mathbf{x}) $.
+4. Calcular la Hessiana $ H(\mathbf{x}) $.
+5. Calcular la dirección de Newton $ \mathbf{d} = -H(\mathbf{x})^{-1} \nabla f(\mathbf{x}) $.
+6. Determinar el paso $ \alpha $ usando un método de línea de búsqueda.
+7. Actualizar $ \mathbf{x} \leftarrow \mathbf{x} + \alpha \mathbf{d} $.
+
 
 ## Uso
 Cada método tiene su propio archivo Python que contiene la implementación de las funciones necesarias. A continuación se muestra un ejemplo de cómo llamar a uno de los métodos para optimizar la función de Himmelblau:
